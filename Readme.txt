@@ -5,6 +5,7 @@ in the following locations:
 	Ipython: http://ipython.org/
 
 
+
 MAC AND LINUX 
 Installation on Mac\Linux is fairly simple for people who are familiar with
 	basic command line administration. 
@@ -15,8 +16,8 @@ Installation on Mac\Linux is fairly simple for people who are familiar with
 3. Copy the notebook files and IDEA backend to the desired location.
 	Run Ipython Notebook from that location.	
 
-WINDOWS
 
+WINDOWS
 For windows Users the installation process is fairly simple: just run the Install_Idea_Distributive.bat.
 The file will go though all the necessary steps and will install the IDEA software.
 
@@ -29,7 +30,7 @@ Note: Save_Local_Files_on_Flashdrive.bat only copies your notebooks, while resto
 
 
 Typical use case is:
-0. Install IDEA using Install_Idea_Distributive.bat if you haven't done so. 
+0. Install IDEA for your operating system if you haven't done so. 
 1. Create a new notebook or use an existing one to explore the dataset.
 	Please note that one should not delete existing information from the notebook, but
 	rather should append his or her own research.
