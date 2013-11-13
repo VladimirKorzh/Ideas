@@ -18,6 +18,16 @@ import string
 
 # <codecell>
 
+def replace(con, column, old_value, new_value):
+	if con != None:
+		cur = con.cursor()
+		
+		table = 'gimlet_csv'
+		sqlstr = 'UPDATE ' + table + ' SET '
+		sqlstr += column + ' = REPLACE(' + column + ', "' + old_value + '", "' + new_value + '");'
+		cur.execute(sqlstr)
+
+
 class QueryBuilder():
     def __init__(self):
         self.columns = ['*']
@@ -168,7 +178,7 @@ class DataManager():
         for each in data:
           for each_column in data[each][0]:
             # convert the names into possible and acceptable database table-row names
-            each_column = each_column.replace(' ', '_').replace('(', '').replace(')', '').replace('\xef\xbb\xbf','')
+            each_column = each_column.replace(' ', '_').replace('(', '').replace(')', '').replace('\xef\xbb\xbf','').lower()
             if each_column not in columns:               
                 columns.append(each_column)         
         return columns    
@@ -209,7 +219,7 @@ class DataManager():
                 for each_val in each_row:
                     if each_val =='':
                       each_val = 'null'
-                    values.append(each_val)
+                    values.append(each_val.lower())
                   
                 cur.execute(prep_statement, values)
         con.commit()
@@ -230,8 +240,9 @@ class DataAnalyzer():
           question = row[0].lower()
           question = "".join(l for l in question if l not in string.punctuation)
           for word in question.split():
-            if word not in nltk.corpus.stopwords.words('english'):     
-              full_text += ' ' + word
+            if word not in nltk.corpus.stopwords.words('english'):
+				if str(word) != str('null'):
+					full_text += ' ' + word
        
         return full_text  
 
@@ -245,7 +256,7 @@ class DataAnalyzer():
        
   
         
-    def get_most_frequest_words(self, text, amount=50,draw=True):
+    def get_most_frequent_words(self, text, amount=50,draw=True):
         fd = nltk.FreqDist()
                  
         for word in text.split():
