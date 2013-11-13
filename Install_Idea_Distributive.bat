@@ -38,6 +38,9 @@ GOTO STEP2
 :STOPWORDS
 echo Downloading stopwords Dictionary.
 python -m nltk.downloader stopwords
+echo Downloading wordnet for lemminization.
+python -m nltk.downloader wordnet
+
 GOTO STEP3
 ################################# ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -46,7 +49,7 @@ GOTO STEP3
 
 ################################# INSTALLING NOTEBOOKS AND DATA
 :NOTEBOOKS
-%cd%Copy_Files_From_Flashdrive_to_Disk.bat
+%cd%\Copy_Files_From_Flashdrive_to_Disk.bat
 GOTO STEP4
 
 ################################ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
