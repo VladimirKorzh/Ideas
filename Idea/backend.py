@@ -100,7 +100,8 @@ class QueryBuilder():
             rows = cur.fetchall()
             self.last_result = rows
 
-        self.log()
+        if self.show:
+            self.log()
 
         if con == None:
             print query
