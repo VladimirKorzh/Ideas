@@ -1,5 +1,4 @@
-@echo off
+@echo on
 pushd %cd%\Idea
-Anaconda
 %UserProfile%\Anaconda\python.exe "%UserProfile%\Anaconda\Scripts/ipython-script.py" notebook
 pause
